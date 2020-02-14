@@ -6,6 +6,7 @@ const cool = require('cool-ascii-faces')
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
+const OMDBAPI = process.env.OMDBAPI || 5;
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -56,7 +57,7 @@ bot.onText(/\/movie (.+)/, function (msg, match) {
         movie = movie.substring(0, byYear);
         fullRequest = movie + `&y=${year}`;
     }
-    request(`http://www.omdbapi.com/?apikey=ec8294aa&t=${fullRequest}`, function (error, response, body) {
+    request(`http://www.omdbapi.com/?apikey=${OMDBAPI}&t=${fullRequest}`, function (error, response, body) {
         var deets = JSON.parse(body);
         if (deets.Response === "True" && response.statusCode == 200) {
             bot.sendMessage(chatId, "_Looking for _" + movie + "...", { parse_mode: 'Markdown' })
