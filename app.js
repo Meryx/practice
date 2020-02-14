@@ -75,19 +75,3 @@ bot.onText(/\/movie (.+)/, function (msg, match) {
 
 });
 
-bot.onText(/\/anime (.+)/, function(msg,match){
-  var chatId = msg.chat.id;
-  var anime = match[1];
-  var options = {
-  url: 'https://kitsu.io/api/edge/anime?filter[text]=cowboy%20bebop&page[limit]=1&page[offset]=0',
-  json: true,
-  headers: {
-    "Accept": "application/vnd.api+json",
-    "Content-Type": "application/vnd.api+json"
-  }
-};
-  request(options, function(error, response, body){
-        bot.sendMessage(chatId, response);
-        bot.sendMessage(chatId, body);
-  });
-});
