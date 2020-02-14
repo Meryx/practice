@@ -87,7 +87,7 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   }
 };
   request(options, function(error, response, body){
-        bot.sendMessage(chatId, response);
+        bot.sendMessage(chatId, response.statusCode);
   });
 });
 
