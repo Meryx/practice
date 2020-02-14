@@ -1,5 +1,5 @@
 const TelegramBot = require("node-telegram-bot-api");
-const token = "807981736:AAFC0uLt9T6BHH1GiaLjOVqx3d2nQ30bt7A";
+const token = process.env.TOKEN || 5;
 const bot = new TelegramBot(token, { polling: true });
 const request = require("request");
 const cool = require('cool-ascii-faces')
