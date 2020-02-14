@@ -1,19 +1,22 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "node app ",
+  "description": "",
   "main": "app.js",
   "scripts": {
-  "start": "node app.js"
-},
+    "start": "node app.js"
+  },
   "repository": {
-  "type": "git",
-  "url": ""
-},
+    "type": "git",
+    "url": "practice"
+  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-  "url": ""
-},
-  "homepage": ""
+  "dependencies": {
+    "node-telegram-bot-api": "^0.40.0",
+    "request": "^2.88.2"
+  },
+  "engines": {
+    "node": "8.10.0"
+  }
 }
