@@ -3,6 +3,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const token = "807981736:AAFC0uLt9T6BHH1GiaLjOVqx3d2nQ30bt7A";
 const bot = new TelegramBot(token, { polling: true });
 const request = require("request");
+const PORT = process.env.PORT || 5000
 
 bot.onText(/\/start/, function (msg, match) {
     var chatId = msg.chat.id;
