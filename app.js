@@ -82,8 +82,8 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   url: 'https://kitsu.io/api/edge/anime?filter[text]=cowboy%20bebop',
   json: true,
   headers: {
-    "Accept": "application/vnd.api+json"
-    "Content-Type": "application/vnd.api+json"
+    'Accept': 'application/vnd.api+json'
+    'Content-Type': 'application/vnd.api+json'
   }
 };
   request(options, function(error, response, body){
