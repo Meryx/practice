@@ -87,8 +87,7 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   var deets = kitsu.get(url);
   var data = deets.data[0];
   var echo = data.canonicalTitle;
-
-  bot.sendMessage(chatId, data.canonicalTitle);
+  console.log(echo);
+  bot.sendMessage(chatId, echo);
 
 });
-bot.on("polling_error", (err) => console.log(err));
