@@ -84,7 +84,7 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   var chatId = msg.chat.id;
   var anime = match[1];
   var url = 'https://kitsu.io/api/edge/anime?filter[text]=cowboy%20bebop&page[limit]=1&page[offset]=0';
-  var deets = kitsu.get(url);
+  var deets = await kitsu.get(url);
   var data = deets.data[0];
   bot.sendMessage(chatId, data.canonicalTitle);
 
