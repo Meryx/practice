@@ -1,10 +1,11 @@
 const TelegramBot = require("node-telegram-bot-api");
+const request = require("request");
+const cool = require('cool-ascii-faces');
+const express = require('express');
+const path = require('path');
+const jsonapi = require('jsonapi-parse');
 const token = process.env.TOKEN || 5;
 const bot = new TelegramBot(token, { polling: true });
-const request = require("request");
-const cool = require('cool-ascii-faces')
-const express = require('express')
-const path = require('path')
 const PORT = process.env.PORT || 5000
 const OMDBAPI = process.env.OMDBAPI || 5;
 
@@ -87,7 +88,7 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   }
 };
   request(options, function(error, response, body){
-
-        bot.sendMessage(chatId, body.substring(0,20));
+        var deets = jsonapi.parse(body);
+        bot.sendMessage(chatId, deets.data.slug);
   });
 });
