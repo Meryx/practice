@@ -4,10 +4,14 @@ const cool = require('cool-ascii-faces');
 const express = require('express');
 const path = require('path');
 const jsonapi = require('jsonapi-parse');
-const token = process.env.TOKEN || 5;
+const Kitsu = require('kitsu');
+const htmlToText = require('html-to-text');
 const bot = new TelegramBot(token, { polling: true });
+const kitsu = new Kitsu();
+const token = process.env.TOKEN || 5;
 const PORT = process.env.PORT || 5000
 const OMDBAPI = process.env.OMDBAPI || 5;
+
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -79,17 +83,9 @@ bot.onText(/\/movie (.+)/, function (msg, match) {
 bot.onText(/\/anime (.+)/, function(msg,match){
   var chatId = msg.chat.id;
   var anime = match[1];
-  var options = {
-  url: 'https://kitsu.io/api/edge/anime?filter[text]=cowboy%20bebop&page[limit]=1&page[offset]=0',
-  json: true,
-  headers: {
-    "Accept": "application/vnd.api+json",
-    "Content-Type": "application/vnd.api+json"
-  }
-};
-  request(options, function(error, response, body){
-        var deets = jsonapi.parse(body);
-        var echo = deets.data.slug;
-        bot.sendMessage(chatId, echo);
-  });
+  var url = 'https://kitsu.io/api/edge/anime?filter[text]=cowboy%20bebop&page[limit]=1&page[offset]=0',
+  var deets = kitsu.get(url);
+  var data = deets.data[0];
+  bot.sendMessage(chatId, data.canonicalTitle);
+
 });
