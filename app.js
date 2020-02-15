@@ -5,12 +5,12 @@ const express = require('express');
 const path = require('path');
 const jsonapi = require('jsonapi-parse');
 const Kitsu = require('kitsu');
-const htmlToText = require('html-to-text');
-const bot = new TelegramBot(token, { polling: true });
-const kitsu = new Kitsu();
 const token = process.env.TOKEN || 5;
 const PORT = process.env.PORT || 5000
 const OMDBAPI = process.env.OMDBAPI || 5;
+const htmlToText = require('html-to-text');
+const bot = new TelegramBot(token, { polling: true });
+const kitsu = new Kitsu();
 
 
 express()
