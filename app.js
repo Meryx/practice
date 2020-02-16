@@ -89,7 +89,7 @@ bot.onText(/\/anime (.+)/, function(msg,match){
     var data = deets.data[0];
     var echo = "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount + "\nPlot: " + data.synopsis;
 
-    bot.sendPhoto(chatId, data.posterImage.medium, {caption: echo});
+    bot.sendPhoto(chatId, data.posterImage.medium, {caption: "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount + "\nPlot: " + data.synopsis});
   })
 
 
