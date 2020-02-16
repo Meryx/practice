@@ -83,12 +83,13 @@ bot.onText(/\/movie (.+)/, function (msg, match) {
 bot.onText(/\/anime (.+)/, function(msg,match){
   var chatId = msg.chat.id;
   var anime = match[1];
-  var url = 'anime?filter[text]=cowboy%20bebop&page[limit]=1&page[offset]=0';
+  var url = `anime?filter[text]=${anime}&page[limit]=5&page[offset]=0`;
   kitsu.get(url)
   .then (deets =>{
     var data = deets.data[0];
-    var echo = data.canonicalTitle;
-    bot.sendMessage(chatId, echo);
+    var echo = "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount + "\nPlot: " + data.synopsis;
+
+    bot.sendPhoto(chatId, data.posterImage.medium, {caption: echo});
   })
 
 
