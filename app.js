@@ -68,7 +68,7 @@ bot.onText(/\/movie (.+)/, function (msg, match) {
             bot.sendMessage(chatId, "_Looking for _" + movie + "...", { parse_mode: 'Markdown' })
                 .then(function (msg) {
                     bot.sendPhoto(chatId, deets.Poster, {
-                        caption: "Title: " + deets.Title + "\nYear: " + deets.Year + "\nGenre: " + deets.Genre + "\nPlot: " + deets.Plot + "\nIMDB URL: "
+                        caption: "Title: " + deets.Title + "\n\nYear: " + deets.Year + "\n\nGenre: " + deets.Genre + "\n\nPlot: " + deets.Plot + "\n\nIMDB URL: "
                             + `https://www.imdb.com/title/${deets.imdbID}`});
                 })
 
@@ -87,9 +87,8 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   kitsu.get(url)
   .then (deets =>{
     var data = deets.data[0];
-    var echo = "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount;
-    bot.sendPhoto(chatId, data.posterImage.medium, {caption: "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount
-  + `Kitsu URL: https://kitsu.io/anime/${data.id}`});
+    bot.sendPhoto(chatId, data.posterImage.medium, {caption: "Title: " + data.canonicalTitle + "\n\nDate of Airing: " + data.startDate + "\n\nEpisode count: " + data.episodeCount
+  + `\n\nKitsu URL: https://kitsu.io/anime/${data.id}`});
   })
 
 
