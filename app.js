@@ -33,7 +33,7 @@ bot.onText(/\/help/, function(msg, match) {
   var message;
   message = "Currently available commands\necho: Echoes the message you sent back.\nmovie: Searches for a movie by title. Search in the following format to specifcy year\n\"Rush (1991)\"";
   bot.sendMessage(chatId, message);
-});
+});var hi =
 
 bot.onText(/\/settings/, function(msg, match) {
   var chatId = msg.chat.id;
@@ -102,8 +102,13 @@ bot.onText(/\/anime (.+)/, function(msg, match) {
     })
 });
 
-
-bot.onText(/دبب/,function (msg, match){
+bot.onText(/دبب/, function(msg, match) {
   var chatId = msg.chat.id;
   bot.sendMessage(chatId, "دبب");
 });
+
+bot.onText(/^قول (.+)/, function(msg, match){
+  var chatId = msg.chat.id;
+  var echo = match[1];
+  bot.sendMessage(chatId, echo);
+})
