@@ -102,9 +102,8 @@ bot.onText(/\/anime (.+)/, function(msg, match) {
     })
 });
 
-var hi =
 
-bot.onText(/^دبب$/,function (msg, match){
+bot.onText(/دبب/,function (msg, match){
   var chatId = msg.chat.id;
   bot.sendMessage(chatId, "دبب");
 });
