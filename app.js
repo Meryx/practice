@@ -87,7 +87,7 @@ bot.onText(/\/anime (.+)/, function(msg,match){
   kitsu.get(url)
   .then (deets =>{
     var data = deets.data[0];
-    var echo = "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount + "\nPlot: " + data.synopsis;
+    var echo = "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount;
 
     bot.sendPhoto(chatId, data.posterImage.medium, {caption: "Title: " + data.canonicalTitle + "\nYear: " + data.startDate + "\nEpisode count: " + data.episodeCount + "\nPlot: " + data.synopsis});
   })
