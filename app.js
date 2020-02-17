@@ -90,6 +90,9 @@ bot.onText(/\/anime (.+)/, function(msg,match){
     bot.sendPhoto(chatId, data.posterImage.medium, {caption: "Title: " + data.canonicalTitle + "\n\nDate of Airing: " + data.startDate + "\n\nEpisode count: " + data.episodeCount
   + `\n\nKitsu URL: https://kitsu.io/anime/${data.id}`});
   })
+  .catch(err => {
+    bot.sendMessage(chatId, "ERROR: anime not found.");
+  })
 
 
 
